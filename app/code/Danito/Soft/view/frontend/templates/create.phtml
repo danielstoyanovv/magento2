@@ -1,0 +1,31 @@
+<p>
+    <a href="<?= $this->getUrl('danitosoft/flight/index') ?>"><?= __('Flights list') ?></a>
+</p>
+<h1><?= __('Create new flight') ?></h1>
+<form action="<?= $this->getUrl('danitosoft/flight/create') ?>" method="post" data-mage-init='{"validation":{}}' enctype="multipart/form-data">
+    <input type="hidden" name="form_key" value="<?= $this->getFormKey(); ?>" /> 
+    <p>
+        <label><?= __('Destination') ?></label>
+        <input required="true" name="destination" type="text">
+    </p>
+    <p>
+        <label><?= __('Price') ?></label>
+        <input data-validate='{"required":true, "validate-number":true}' name="price" type="text">
+    </p>
+    
+    <p>
+        <label><?= __('Date') ?></label>
+        <input data-validate="{'required':true}" name="date" type="text">
+    </p>
+    
+    <p>
+        <label><?= __('Destination image') ?></label>
+        <input type='file' name='destination_image'>
+    <p>
+    <p>
+        <label><?= __('Destination data') ?></label>
+        <input type='file' name='destination_data'>
+    </p>
+    
+    <input type="submit" value="Create">
+</form>

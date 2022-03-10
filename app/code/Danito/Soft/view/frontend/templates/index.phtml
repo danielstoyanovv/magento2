@@ -1,0 +1,33 @@
+<p>
+    <a href="<?= $this->getUrl('danitosoft/flight/create') ?>"><?= __('Create new flight') ?></a>
+</p>
+<h1><?= __('Flights list') ?></h1>
+<?php $viewModel = $this->getViewModelFlightsdata(); ?>
+<?php if (!empty($viewModel)) : ?>
+    <?php foreach ($viewModel->getFlights() as $flight) : ?>
+        <div>
+            <?php if (!empty($flight->id)) : ?>
+                <p><?= __('Id') ?>: <?= $flight->id ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($flight->destination)) : ?>
+                <p><?= __('Destination') ?>: <?= $flight->destination ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($flight->price)) : ?>
+                <p><?= __('Price') ?>: <?= $flight->price ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($flight->date)) : ?>
+                <p><?= __('Date') ?>: <?= $flight->date ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($flight->destination_image)) : ?>
+                <p><?= __('Destination image') ?>: <img src="https://laravellocal.com/<?= str_replace('public', 'storage', $flight->destination_image) ?>" width="150px" /> </p>
+            <?php endif; ?>
+            <?php if (!empty($flight->destination_data)) : ?>
+                <p><a href="https://laravellocal.com/<?= str_replace('public', 'storage', $flight->destination_data) ?>"><?= __('Destination data') ?></a> </p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
