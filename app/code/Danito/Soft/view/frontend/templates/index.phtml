@@ -28,6 +28,7 @@
             <?php if (!empty($flight->destination_data)) : ?>
                 <p><a href="https://laravellocal.com/<?= str_replace('public', 'storage', $flight->destination_data) ?>"><?= __('Destination data') ?></a> </p>
             <?php endif; ?>
+            <a href="<?= $this->getUrl('danitosoft/flight/edit', ['id' => $flight->id]) ?>"><?= __('Edit flight') ?></a>
         </div>
     <?php endforeach; ?>
 <?php endif; ?>
