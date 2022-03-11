@@ -1,0 +1,39 @@
+<?php $flight = $block->getData('flight'); ?>
+<p>
+    <a href="<?= $this->getUrl('danitosoft/flight/index') ?>"><?= __('Flights list') ?></a>
+</p>
+<h1><?= __('Edit flight') ?></h1>
+<?php if (!empty($flight) && !empty($flight['id'])) : ?>
+    <form action="<?= $this->getUrl('danitosoft/flight/update', ['id' => $flight['id']]) ?>" method="post" data-mage-init='{"validation":{}}' enctype="multipart/form-data">
+        <input type="hidden" name="form_key" value="<?= $this->getFormKey(); ?>" />
+        <input name="_method" type="hidden" value="PATCH" />
+        <p>
+            <label><?= __('Destination') ?></label>
+            <input value="<?= !empty($flight['destination']) ? $flight['destination'] : ''; ?>" required="true" name="destination" type="text">
+        </p>
+        <p>
+            <label><?= __('Price') ?></label>
+            <input value="<?= !empty($flight['price']) ? $flight['price'] : ''; ?>" data-validate='{"required":true, "validate-number":true}' name="price" type="text">
+        </p>
+        <p>
+            <label><?= __('Date') ?></label>
+            <input value="<?= !empty($flight['date']) ? $flight['date'] : ''; ?>" data-validate="{'required':true}" name="date" type="text">
+        </p>
+        <p>
+            <label><?= __('Destination image') ?></label>
+            <input type='file' name='destination_image'>
+            <?php if (!empty($flight['destination_image'])) : ?>
+                <img src="https://laravellocal.com/<?= str_replace('public', 'storage', $flight['destination_image']) ?>" width="150px" /> </p>
+            <?php endif; ?>
+        <p>
+        <p>
+            <label><?= __('Destination data') ?></label>
+            <input type='file' name='destination_data'>
+            <?php if (!empty($flight['destination_data'])) : ?>
+                <p><a href="https://laravellocal.com/<?= str_replace('public', 'storage', $flight['destination_data']) ?>"><?= __('Destination data') ?></a> </p>
+            <?php endif; ?>
+        </p>
+        
+        <input type="submit" value="Edit">
+    </form>
+<?php endif; ?>
