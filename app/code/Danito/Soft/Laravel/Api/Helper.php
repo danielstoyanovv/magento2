@@ -103,9 +103,9 @@ class Helper
     /**
      * get flight from rest api
      * @param int $id
-     * @return mixed
+     * @return arrray
      */
-    public function getFlight(int $id)
+    public function getFlight(int $id): array
     {
         $flight = [];
         try {
@@ -116,8 +116,8 @@ class Helper
                 $flight = $response;
             }
         } catch (\Exception $e) {
-            //$this->log->error($e->getMessage());
-            die($e->getMessage());
+            $this->log->error($e->getMessage());
+            //die($e->getMessage());
         }
         return $flight;
     }
